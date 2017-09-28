@@ -1,0 +1,262 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Introducción a la programación en Google Maps</title>
+		
+		<meta name="description" content="Introducción a la programación en Google Maps">
+		<meta name="author" content="Manuel Vargas">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">		
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Desarrollo de aplicaciones geoespaciales en la Web</h2>
+					<h3>Introducción a la programación en Google Maps</h3>
+					<p>
+						<small>Manuel Vargas (mvargas@inbio.ac.cr)</small>
+					</p>
+				</section>
+				<section>
+					<h2>Google Maps</h2>
+			    <ul>
+			      <p><a href="https://www.google.co.cr/maps/" target="_blank">Google Maps</a> es un <strong>servicio de mapas para la Web</strong> desarrollado por <strong>Google</strong> que facilita tanto <strong>datos geoespaciales</strong> como una <strong>interfaz de programación (i.e. API)</strong> para accederlos.</p>
+			      <p>Incluye <strong>imágenes de satélite</strong>, <strong>mapas de carreteras</strong>, <strong>vistas de 360°</strong>, condiciones de <strong>tráfico en tiempo real</strong> y <strong>planificación de rutas</strong>.</p>
+			      <p>Ha ejercido una <a href="https://www.e-education.psu.edu/geog585/node/643" target="_blank">influencia considerable en el desarrollo de aplicaciones geoespaciales en la Web</a>.</p>
+			    </ul>
+				</section>
+				<section>
+					<h2>Historia de Google Maps</h2>
+			    <ul>
+			      <p>Proviene de una aplicación de escritorio, creada por los daneses <strong>Lars y Eilstrup Rasmussen</strong> en <a href="https://www.gizmodo.com.au/2014/03/you-are-here-the-australians-who-built-google-maps-and-changed-the-world-forever/" target="_blank"><strong>Where 2 Technologies</strong></a>, una compañía co-fundada por ellos y ubicada en Sydney, Australia.</p>
+			      <p>En 2004, la compañía fue adquirida por Google, que la transformó en una aplicación web. Google la inauguró en febrero de 2005.</p>
+			      <p>Servicios similares incluyen <a href="https://yandex.com/maps/" target="_blank">Yandex</a>, <a href="https://www.bing.com/maps" target="_blank">Bing</a>, <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>, <a href="https://www.waze.com/livemap" target="_blank">Waze</a>, <a href="https://carto.com/" target="_blank">Carto</a> y <a href="https://www.mapbox.com/" target="_blank">MapBox</a>.</p>
+			    </ul>
+				</section>
+				<section>
+					<h2>Los API de Google Maps</h2>
+			    <ul>
+			      <p>Google Maps cuenta con varias <a href="https://developers.google.com/maps/" target="_blank"><strong>Application Programming Interface (API)</strong></a> propietarias que permiten acceder a sus datos e insertar su funcionalidad en otras aplicaciones.</p>
+			      <p>Estas API se clasifican por <strong>plataforma</strong> (ej. Android, iOS, Web) y por <strong>funcionalidad</strong> (ej. georeferenciación, cálculo de direcciones, cálculo de distancias).</p>
+			    </ul>
+				</section>	
+				<section>
+					<h2>El API para JavaScript</h2>
+			    <ul>
+			      <p>El desarrollo de aplicaciones de Google Maps en la Web está basado en el lenguaje <strong>JavaScript</strong>.</p>
+			      <p>El <a href="https://developers.google.com/maps/documentation/javascript/" target="_blank">API de Google Maps para JavaScript</a> proporciona acceso a las <strong>clases y objetos</strong> necesarios para insertar los mapas en documentos <strong>HTML</strong>.</p>
+			      <p>La versión más reciente del API es la 3 y todas sus clases y objetos pueden consultarse en la <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference" target="_blank">sección de referencia del API</a>.</p>
+			    </ul>
+				</section>
+				<section>
+					<h2>Principales clases y objetos</h2>
+			    <ul>
+			      <li>La clase <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map" target="_blank">Map</a>: crea un nuevo mapa en un contenedor de HTML, típicamente un elemento <a href="https://www.w3schools.com/tags/tag_div.asp" target="_blank">div</a></li>
+			      <li>El objeto <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#MapOptions" target="_blank">MapOptions</a>: especifica <strong>propiedades</strong> del mapa como:
+			        <ul>
+			          <li>Centro: especificado mediante la clase <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#LatLng" target="_blank">LatLng</a></li>
+			          <li>Tipo de mapa: especificado mediante una constante <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#MapTypeId" target="_blank">MapTypeId</a></li>
+			          <li>"Zoom" inicial: un número entre 0 y un <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#MapTypeId" target="_blank">máximo</a></li>
+			          <li>Controles: de <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#ZoomControlOptions" target="_blank">zoom</a> (acercar/alejar) y <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#PanControlOptions" target="_blank">pan</a> (mover)</li>
+			        </ul>
+			      </li>
+			    </ul>
+				</section>
+				<section>
+					<h2>Otras clases y objetos</h2>
+			    <ul>
+			      <li>La clase <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#Marker" target="_blank">Marker</a>: crea una <strong>marca</strong> de un sitio en un mapa</li>
+			      <li>El objeto <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#MarkerOptions" target="_blank">MarkOptions</a>: especifica <strong>propiedades</strong> de la marca como:
+			        <ul>
+			          <li>Mapa: un objeto de la clase <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map" target="_blank">Map</a></li>
+                <li>Posición: especificado mediante la clase <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#LatLng" target="_blank">LatLng</a></li>			          
+			        </ul>
+			      </li>
+			    </ul>
+				</section>											
+				<section>
+					<h2>Pasos para la programación de un mapa con Google Maps</h2>
+			    <ol>
+		        <li>Crear un documento HTML</li>
+		        <li>Especificar la dirección del API</li>
+		        <li>Crear un elemento contenedor para el mapa</li>
+		        <li>Especificar las opciones del mapa</li>
+		        <li>Crear el objeto mapa</li>
+		        <li>Cargar el mapa</li>
+		        <li>Agregar marcas</li>
+			    </ol>
+				</section>
+				<section>
+					<h2>1. Crear un documento HTML</h2>
+				    <pre><code class="hljs" data-trim contenteditable>
+              &lt;!DOCTYPE html&gt;
+              &lt;html lang="es"&gt;
+                &lt;head&gt;
+                  &lt;title&gt;&lt;/title&gt;
+                  &lt;meta charset="UTF-8"&gt; 
+                &lt;/head&gt;
+                &lt;body&gt;
+                &lt;/body&gt;
+              &lt;/html&gt;
+				    </code></pre>
+				</section>
+				<section>
+					<h2>2. Especificar la dirección del API</h2>
+					<ul>
+					    <p>Se especifica en el elemento <a href="https://www.w3schools.com/tags/tag_script.asp" target="_blank">script</a></p>
+					</ul>
+			    <pre><code class="hljs" data-trim contenteditable>
+            &lt;!DOCTYPE html&gt;
+            &lt;html lang="es"&gt;
+              &lt;head&gt;
+                &lt;title&gt;&lt;/title&gt;
+                &lt;meta charset="UTF-8"&gt; 
+                &lt;script src="https://maps.googleapis.com/maps/api/js"&gt;&lt;/script&gt;        
+              &lt;/head&gt;
+              &lt;body&gt;
+              &lt;/body&gt;
+            &lt;/html&gt;
+			    </code></pre>
+				</section>								
+				<section>
+					<h2>3. Crear un elemento contenedor para el mapa</h2>
+					<ul>
+					    <p>El contenedor es el elemento HTML que contendrá el mapa. Generalmente, se usa el elemento genérico <a href="https://www.w3schools.com/tags/tag_div.asp" target="_blank">div</a></p>
+					</ul>
+			    <pre><code class="hljs" data-trim contenteditable>
+            &lt;div id="mimapa" style="width:900px; height:580px;"&gt;&lt;/div&gt;
+			    </code></pre>
+				</section>								
+				<section>
+					<h2>4. Especificar las opciones del mapa</h2>
+					<ul>
+					  <p>Junto con el mapa, debe crear un objeto <a href="https://developers.google.com/maps/documentation/javascript/reference#MapOptions">MapOptions</a> que especifica el centro del mapa, el nivel de acercamiento y el tipo de mapa, entre otras. Es recomendable hacer esto con una función.</p>
+					</ul>
+			    <pre><code class="hljs" data-trim contenteditable>
+            function cargarMapa() {
+              var opcionesMapa = {
+                center:new google.maps.LatLng(10, -84), 
+                zoom:7, 
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+              };
+            }
+			    </code></pre>
+				</section>	
+				<section>
+					<h2>5. Crear el objeto mapa</h2>
+					<ul>
+					  <p>El objeto mapa se crea al instanciar la clase <a href="https://developers.google.com/maps/documentation/javascript/reference#Map">Map</a>. Deben especificarse el contenedor y las opciones del mapa.</p>
+					</ul>
+			    <pre><code class="hljs" data-trim contenteditable>
+            var mapa = new google.maps.Map(document.getElementById("mimapa"), opcionesMapa);      
+			    </code></pre>
+				</section>
+				<section>
+					<h2>6. Cargar el mapa</h2>
+					<ul>
+					  <p>El mapa se carga (por ejemplo) en el evento <a href="https://www.w3schools.com/Jsref/event_onload.asp">onload</a> del elemento <strong>body</strong>.</p>
+					</ul>
+			    <pre><code class="hljs" data-trim contenteditable>
+            &lt;body onload = "cargarMapa()"&gt;
+			    </code></pre>
+				</section>	
+				<section>
+					<h2>7. Agregar marcas</h2>
+					<ul>
+					  <p>Las marcas se especifican mediante la clase <a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#Marker" target="_blank">Marker</a></p>
+					</ul>
+			    <pre><code class="hljs" data-trim contenteditable>
+            var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(10, -84),
+              map: mapa
+            });
+			    </code></pre>
+				</section>								
+				<section>
+					<h2>Ejemplo completo</h2>
+				    <pre><code class="hljs" data-trim contenteditable>
+              &lt;!DOCTYPE html&gt;
+              &lt;html lang="es"&gt;  
+                &lt;head&gt;
+                  &lt;title&gt;Mi primer mapa&lt;/title&gt;
+                  &lt;script src="https://maps.googleapis.com/maps/api/js"&gt;&lt;/script&gt;
+                  &lt;meta charset="UTF-8"&gt;
+                  &lt;script&gt;
+                    function cargarMapa() {
+                      var opcionesMapa = {
+                        center:new google.maps.LatLng(10, -84), 
+                        zoom:6, 
+                        mapTypeId:google.maps.MapTypeId.ROADMAP
+                      };
+                      
+                      var mapa = new google.maps.Map(document.getElementById("mimapa"),opcionesMapa);
+                      
+                      var marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(10, -84),
+                        map: mapa
+                      });                      
+                    }
+                  &lt;/script&gt;
+                &lt;/head&gt;
+                &lt;body onload="cargarMapa()"&gt;
+                  &lt;div id="mimapa" style="width:580px; height:400px;"&gt;&lt;/div&gt;
+                &lt;/body&gt;
+              &lt;/html&gt;
+				    </code></pre>
+				</section>				
+				<section>
+					<h2>Eventos</h2>
+					<ul>
+					  <p>JS maneja la interacción con el usuario mediante <a href="https://developers.google.com/maps/documentation/javascript/events">eventos</a> que son <em>escuchados</em> por el programa.</p>
+					  <p>Cada objeto de Google Maps tiene una lista de eventos definidos</p>
+					</ul>
+				</section>			
+				<section>
+					<h2><em>Listeners</em></h2>
+					<ul>
+					  <p>Cuando hay interés en <em>escuchar</em> un evento, se registra un <em>listener</em> para ese evento con la función <em>addListener()</em>.</p>
+					</ul>
+				</section>						
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				],
+	      // Display the page number of the current slide
+	      slideNumber: true				
+			});
+		</script>
+	</body>
+</html>

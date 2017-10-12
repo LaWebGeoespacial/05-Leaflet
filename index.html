@@ -61,6 +61,88 @@
 			      <p>Se recomienda revisar el ejemplo <a href="https://maptimeboston.github.io/leaflet-intro/" target="_blank">Leaflet!: Make a web map!</a> del sitio <a href="https://maptimeboston.github.io/" target="_blank">Maptime Boston</a>.</p>
 			    </ul>
 				</section>	
+				<section>
+					<h2>La clase Map</h2>
+			    <ul>
+			      <p>La clase <a href="http://leafletjs.com/reference-1.2.0.html#map" target="_blank">Map</a> es la clase central de Leaflet. Se utiliza para crear un mapa y manipularlo.</p>
+			      <p>
+			        El constructor recibe como parámetros:
+			        <ul>
+			          <li>El identificador (id) del elemento HTML (ej. div) que contiene el mapa.</li>
+			          <li>Una lista de opciones.</li>
+			        </ul>
+			      </p>
+			    </ul>
+				</section>
+				<section>
+					<h2>Ejemplo de uso de la clase Map</h2>
+				    <pre><code class="hljs" data-trim contenteditable>
+              // Inicializa un mapa en el elemento "map" 
+              // con un centro y un nivel de acercamiento iniciales.
+              var map = L.map('map', {
+                center: [10, -84],      
+                zoom: 15
+              });              
+				    </code></pre>          
+				</section>		
+				<section>
+					<h2>La clase TileLayer</h2>
+			    <ul>
+			      <p>La clase <a href="http://leafletjs.com/reference-1.2.0.html#tilelayer" target="_blank">TileLayer</a> se utiliza para cargar y desplegar <a href="https://en.wikipedia.org/wiki/Tiled_web_map" target="_blank">capas basadas en teselas</a> (ej. <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>, <a href="https://www.mapbox.com/" target="_blank">Mapbox</a>).</p>
+			      <p>
+			        El constructor recibe como parámetros:
+			        <ul>
+			          <li>Una plantilla de URL.</li>
+			          <li>Una lista de opciones.</li>
+			        </ul>
+			      </p>
+			    </ul>
+				</section>
+				<section>
+					<h2>Ejemplo de uso de la clase TileLayer</h2>
+				    <pre><code class="hljs" data-trim contenteditable>
+              // Crea una capa de tipo "TileLayer" basada en OpenStreetMap,
+              // especifica la opción "attribution"
+              // y la añade al mapa "map" con el método "addTo()".
+              L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'
+              }).addTo(map);           
+				    </code></pre>          
+				</section>		
+				<section>
+					<h2>La clase GeoJSON</h2>
+			    <ul>
+			      <p>La clase <a href="http://leafletjs.com/reference-1.2.0.html#geojson" target="_blank">GeoJSON</a> representa un objeto o un arreglo de objetos de tipo GeoJSON, los cuales pueden ser desplegados como una capa en un mapa.</p>
+			      <p>
+			        El constructor recibe como parámetros:
+			        <ul>
+			          <li>Un objeto en el <a href="http://geojson.org/" target="_blank">formato GeoJSON</a>.</li>
+			          <li>Una lista de opciones.</li>
+			        </ul>
+			      </p>
+			    </ul>
+				</section>
+				<section>
+					<h2>Ejemplo de uso de la clase GeoJSON</h2>
+				    <pre><code class="hljs" data-trim contenteditable>
+              // Crea una capa de tipo GeoJSON y especifica un estilo.
+              L.geoJson(datosGeoJSON, {
+                style: function (feature) {
+                  return {
+                    fillColor: '#0000ff', 
+                    color: '#ffffff'
+                  };
+                }
+              }).addTo(map);          
+				    </code></pre>          
+				</section>
+				<section>
+					<h2>Ejemplo</h2>
+			    <ul>
+			      <p><a href="https://lawebgeoespacial.github.io/ejemplo-leaflet-geojson/" target="_blank">https://lawebgeoespacial.github.io/ejemplo-leaflet-geojson/</a></p>
+			      <p>Código fuente: <a href="https://github.com/LaWebGeoespacial/ejemplo-leaflet-geojson" target="_blank">https://github.com/LaWebGeoespacial/ejemplo-leaflet-geojson</a></p>
+			    </ul>
+				</section>								
 			</div>
 		</div>
 

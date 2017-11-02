@@ -165,6 +165,31 @@
 			    </ul>
 				</section>
 				<section>
+					<h2>Configuración del código CSS para dispositivos móviles</h2>
+			    <ul>
+			      <p>Se debe configurar el código CSS para abarcar todo el espacio disponible en la pantalla.</p>
+				    <pre><code class="hljs" data-trim contenteditable>
+              body {
+                  padding: 0;
+                  margin: 0;
+              }
+              html, body, #map {
+                  height: 100%;
+                  width: 100vw;
+              }         
+				    </code></pre> 			      
+			    </ul>
+				</section>					
+				<section>
+					<h2>Configuración del código HTML para dispositivos móviles</h2>
+			    <ul>
+			      <p>Se debe configurar el código HTML para que le indique al navegador web del dispositivo móvil que use toda la pantalla.</p>
+				    <pre><code class="hljs" data-trim contenteditable>
+              <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+				    </code></pre> 			      
+			    </ul>
+				</section>					
+				<section>
 					<h2>Ejemplo 4</h2>
 			    <ul>
 			      <p>Mapa configurado para dispositivos móviles: <a href="https://lawebgeoespacial.github.io/ejemplo-leaflet-movil/" target="_blank">https://lawebgeoespacial.github.io/ejemplo-leaflet-movil/</a></p>
